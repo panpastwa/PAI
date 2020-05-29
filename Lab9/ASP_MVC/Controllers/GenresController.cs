@@ -89,25 +89,9 @@ namespace ASP_MVC.Controllers
             return View(genre);
         }
 
-        // GET: Genres/Delete/5
-        public ActionResult Delete(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Genre genre = db.Genres.Find(id);
-            if (genre == null)
-            {
-                return HttpNotFound();
-            }
-            return View(genre);
-        }
-
         // POST: Genres/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int id)
+        [HttpDelete, ActionName("Delete")]
+        public ActionResult Delete(int id)
         {
             Genre genre = db.Genres.Find(id);
             db.Genres.Remove(genre);
